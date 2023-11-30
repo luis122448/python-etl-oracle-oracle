@@ -1,0 +1,24 @@
+version: "3.8"
+services:
+  app:
+    container_name: python-etl-oracle
+    env_file:
+      - ./.env
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      - DB_ORACLE_USER_TRANSACCIONAL = $DB_ORACLE_USER_TRANSACCIONAL
+      - DB_ORACLE_PASSWORD_TRANSACCIONAL = $DB_ORACLE_PASSWORD_TRANSACCIONAL
+      - DB_ORACLE_DSN_TRANSACCIONAL = $DB_ORACLE_DSN_TRANSACCIONAL
+      - DB_ORACLE_USER_DATAWAREHOUSE = $DB_ORACLE_USER_DATAWAREHOUSE
+      - DB_ORACLE_PASSWORD_DATAWAREHOUSE = $DB_ORACLE_PASSWORD_DATAWAREHOUSE
+      - DB_ORACLE_DSN_DATAWAREHOUSE = $DB_ORACLE_DSN_DATAWAREHOUSE
+    command: "python app/server.py"
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/app
+      - /venv
+      - /logscd 
+      - /database

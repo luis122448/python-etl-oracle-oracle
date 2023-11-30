@@ -1,0 +1,9 @@
+# Python
+__pycache__
+venv
+logs
+instantclient_21_10
+.vscode
+.env
+app/wallet/*
+app/certs/*
