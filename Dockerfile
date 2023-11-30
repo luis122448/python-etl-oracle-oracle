@@ -10,6 +10,8 @@ COPY ./app /opt/app/
 COPY ./oracle_home /opt/oracle_home/
 COPY ./install-instantclient.sh /opt/install-instantclient.sh
 
+RUN chmod +x /opt/install-instantclient.sh
+
 ENV LD_LIBRARY_PATH=/opt/oracle_home/instantclient
 
 RUN /bin/bash -c "/opt/install-instantclient.sh"
