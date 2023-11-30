@@ -10,6 +10,9 @@ pip install -r requirements.txt
 # Instalando libaio para el cliente oracle
 apt-get install -y libaio1
 
+# Creando archivo de variables de entorno
+touch .env
+
 # Crenado directorio para certificados SSL
 mkdir -p app/certs
 
@@ -27,3 +30,9 @@ openssl req -new -x509 -keyout ./app/certs/key.pem -out ./app/certs/cert.pem -da
 
 # Creando directorio para la wallet
 mkdir -p app/wallet
+
+# ELiminando el cliente oracle ( SI EXISTE )
+rm -rf ./oracle_home/instantclient_21_12
+
+# Descomprimiendo el cliente oracle
+unzip ./oracle_home/instantclient-basic-linux.x64-21.12.0.0.0dbru.zip -d ./oracle_home

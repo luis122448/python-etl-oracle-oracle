@@ -32,26 +32,7 @@ Se ha desarrollado utilizando Python ( FASTAPI ), Docker y la librería InstantC
     cd python-etl-oracle-oracle
     ```
 
-3. Defina las credenciales creando un archivo .env
-    
-    ```bash
-        DB_ORACLE_USER_TRANSACCIONAL=''
-        DB_ORACLE_PASSWORD_TRANSACCIONAL=''
-        DB_ORACLE_DSN_TRANSACCIONAL=''
-        DB_ORACLE_USER_DATAWAREHOUSE=''
-        DB_ORACLE_PASSWORD_DATAWAREHOUSE=''
-        DB_ORACLE_DSN_DATAWAREHOUSE=''
-    ```
-
-4. Aidicione los archivos de la wallet de Oracle en el directorio app/wallet
-    
-    ```bash
-        cp <origen> ./app/wallet/sqlnet.ora
-        cp <origen> ./app/wallet/tnsnames.ora
-        cp <origen> ./app/wallet/cwallet.sso 
-    ```
-
-5. Configurar la informacion "Distinguished Name" (DN) del certificado SSL
+3. Configurar la informacion "Distinguished Name" (DN) del certificado SSL
     
     ```bash
         export COUNTRY=PE
@@ -63,10 +44,29 @@ Se ha desarrollado utilizando Python ( FASTAPI ), Docker y la librería InstantC
         export EMAIL=''
     ```
 
-6. Ejecutar el script de instalación
+4. Ejecutar el script de instalación
     
     ```bash
         sudo bash install.sh
+    ```
+
+5. Defina las credenciales de la BASE DE DATOS Oracle en el archivo .env
+    
+    ```bash
+        DB_ORACLE_USER_TRANSACCIONAL=''
+        DB_ORACLE_PASSWORD_TRANSACCIONAL=''
+        DB_ORACLE_DSN_TRANSACCIONAL=''
+        DB_ORACLE_USER_DATAWAREHOUSE=''
+        DB_ORACLE_PASSWORD_DATAWAREHOUSE=''
+        DB_ORACLE_DSN_DATAWAREHOUSE=''
+    ```
+
+6. Aidicione los archivos de la wallet de Oracle en el directorio app/wallet
+    
+    ```bash
+        cp ~/sqlnet.ora ./app/wallet
+        cp ~/tnsnames.ora ./app/wallet
+        cp ~/cwallet.sso ./app/wallet 
     ```
 
 7. Ejecutar el script de inicialización
